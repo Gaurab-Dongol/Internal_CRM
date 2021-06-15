@@ -1,5 +1,15 @@
 <?php
 require_once('config.php');
+
+$connect = new PDO("mysql:host=localhost;dbname=Internal_CRM", "root", "root");
+
+$query = "SELECT DISTINCT Consultant FROM OfficeHQ";
+
+$statement = $connect->prepare($query);
+
+$statement->execute();
+
+$result = $statement->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -217,12 +227,34 @@ require_once('config.php');
             <section class="p-t-20">
             <div class="container">
                     <div class="row">
-                                <center>
-                                    <form method="POST" class="form-inline" action="add_query.php">
-                                        <input type="text" class="form-control" name="task" required/>
-                                        <button class="btn btn-primary form-control" name="add">Add Task</button>
+                    <div class="table-data__tool-left">
+                                    <div class="rs-select2--light rs-select2--md">
+                                    <form method="POST" class="" action="add_query.php">
+                                        <select class="js-select2" name="cons" id="multi_search_filter">
+                                            <option selected="selected">Everyone</option>
+                                            <?php
+                                                foreach($result as $row)
+                                                {
+                                                    echo '<option value="'.$row["Consultant"].'">'.$row["Consultant"].'</option>';	
+                                                }
+                                            ?>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                        <input type="hidden" name="hidden_country" id="hidden_country" />
+                                        <div style="clear:both"></div>
+                                        </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-12">
+                                                <div class="input-group">
+                                                    <input type="text" id="input2-group2" name="task" placeholder="Task" class="form-control">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-primary" name="add">Add Task</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
-                                </center>
                             <br /><br /><br />
                                 <div class="table-responsive table--no-card m-b-30">
                                     <table class="table table-borderless table-striped table-earning">
@@ -232,6 +264,7 @@ require_once('config.php');
                                         <th>Task</th>
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th>Consultant</th>
                                         <th>Date</th>
                                     </tr>
                                 </thead>
@@ -257,6 +290,7 @@ require_once('config.php');
                                                 <a href="delete_query.php?task_id=<?php echo $fetch['task_id']?>" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
                                             
                                         </td>
+                                        <td><?php echo $fetch['Consultant']?></td>
                                         <td><?php echo $date?></td>
                                     </tr>
                                     <?php
