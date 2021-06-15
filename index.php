@@ -496,7 +496,7 @@ $result = $statement->fetchAll();
                                 <div class="table-data__tool-left">
                                     <div class="rs-select2--light rs-select2--md">
                                         <select class="js-select2" name="multi_search_filter js-select2" id="multi_search_filter">
-                                            <option selected="selected">All Properties</option>
+                                            <option selected="selected">Everyone</option>
                                             <?php
                                                 foreach($result as $row)
                                                 {
