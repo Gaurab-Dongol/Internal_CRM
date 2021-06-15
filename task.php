@@ -232,6 +232,7 @@ require_once('config.php');
                                         <th>Task</th>
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -240,13 +241,13 @@ require_once('config.php');
                                         $query = $conn->query("SELECT * FROM `task` ORDER BY `task_id` ASC");
                                         $count = 1;
                                         while($fetch = $query->fetch_array()){
+                                        $date = date('d M', strtotime($fetch['Date']));
                                     ?>
                                     <tr>
                                         <td><?php echo $count++?></td>
                                         <td><?php echo $fetch['task']?></td>
                                         <td><?php echo $fetch['status']?></td>
-                                        <td colspan="2">
-                                            <center>
+                                        <td>
                                                 <?php
                                                     if($fetch['status'] != "Done"){
                                                         echo 
@@ -254,8 +255,9 @@ require_once('config.php');
                                                     }
                                                 ?>
                                                 <a href="delete_query.php?task_id=<?php echo $fetch['task_id']?>" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
-                                            </center>
+                                            
                                         </td>
+                                        <td><?php echo $date?></td>
                                     </tr>
                                     <?php
                                         }
