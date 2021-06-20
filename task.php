@@ -263,9 +263,9 @@ $result = $statement->fetchAll();
                                         <th>#</th>
                                         <th>Task</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                         <th>Consultant</th>
                                         <th>Date</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -280,6 +280,9 @@ $result = $statement->fetchAll();
                                         <td><?php echo $count++?></td>
                                         <td><?php echo $fetch['task']?></td>
                                         <td><?php echo $fetch['status']?></td>
+                                        
+                                        <td><?php echo $fetch['Consultant']?></td>
+                                        <td><?php echo $date?></td>
                                         <td>
                                                 <?php
                                                     if($fetch['status'] != "Done"){
@@ -290,8 +293,6 @@ $result = $statement->fetchAll();
                                                 <a href="delete_query.php?task_id=<?php echo $fetch['task_id']?>" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
                                             
                                         </td>
-                                        <td><?php echo $fetch['Consultant']?></td>
-                                        <td><?php echo $date?></td>
                                     </tr>
                                     <?php
                                         }

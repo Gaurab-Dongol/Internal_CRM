@@ -4,7 +4,7 @@
 		if($_POST['task'] != ""){
 			$task = $_POST['task'];
 			$consultant = $_POST['cons'];
-			$conn->query("INSERT INTO task (`task`, `status`,`Date`, `Consultant`) VALUES ('$task', '', NOW(), '$consultant')");
+			$conn->query("INSERT INTO task (`task`, `status`,`Date`, `Consultant`) VALUES ('$task', 'Working on it', NOW(), '$consultant')");
 			header('location:task.php');
 		}
 	}
