@@ -11,7 +11,6 @@ $result = $statement->fetchAll();
 require_once('header.php');
 
 ?>
-
             <section class="p-t-20">
                 <div class="container">
                     <div class="row">
@@ -145,19 +144,19 @@ require_once('header.php');
                                         //Skips first row of excel file
                                         fgetcsv($handle);
                                         while ($data = fgetcsv($handle)) {
-                                            $item1 = mysqli_real_escape_string($conn, $data[0]);
-                                            $item2 = mysqli_real_escape_string($conn, $data[1]);
-                                            $item3 = mysqli_real_escape_string($conn, $data[2]);
-                                            $item4 = mysqli_real_escape_string($conn, $data[3]);
-                                            $item5 = mysqli_real_escape_string($conn, $data[4]);
-                                            $item6 = mysqli_real_escape_string($conn, $data[5]);
-                                            $item7 = mysqli_real_escape_string($conn, $data[6]);
-                                            $item8 = mysqli_real_escape_string($conn, $data[7]);
-                                            $item9 = mysqli_real_escape_string($conn, $data[8]);
-                                            $item10 = mysqli_real_escape_string($conn, $data[9]);
+                                            $item1 = mysqli_real_escape_string($connect, $data[0]);
+                                            $item2 = mysqli_real_escape_string($connect, $data[1]);
+                                            $item3 = mysqli_real_escape_string($connect, $data[2]);
+                                            $item4 = mysqli_real_escape_string($connect, $data[3]);
+                                            $item5 = mysqli_real_escape_string($connect, $data[4]);
+                                            $item6 = mysqli_real_escape_string($connect, $data[5]);
+                                            $item7 = mysqli_real_escape_string($connect, $data[6]);
+                                            $item8 = mysqli_real_escape_string($connect, $data[7]);
+                                            $item9 = mysqli_real_escape_string($connect, $data[8]);
+                                            $item10 = mysqli_real_escape_string($connect, $data[9]);
                                             $query1 = "INSERT INTO OfficeHQ (`Client_Name`,`Email_Id`,`Contact`,`Enquiry`,`Consultant`,`Notes`,`Status`,`Current_Visa`,`Appointment`,`MM_Update`) VALUES ('$item1','$item2', '$item3', '$item4', '$item5', '$item6', '$item7','$item8','$item9','$item10')";
                                             //$query = "INSERT INTO OfficeHQ (`Client_Name`,`Email_Id`,`Contact`,`Enquiry`,`Consultant`,`Notes`,`Status`,`Current_Visa`,`Appointment`,`MM_Update`) VALUES ('item1','item2', 000, 'item4', 'item5', 'item6', 'item7','item8','item9','item10')";
-                                            mysqli_query($conn, $query1);
+                                            mysqli_query($connect, $query1);
                                         }
                                         fclose($handle);
                                         echo "<script>alert('Import done');</script>";

@@ -10,7 +10,7 @@
 	//	die(mysqli_error());
 	//}
 
-	$connect = new PDO("mysql:host=localhost;dbname=Internal_CRM", "root", "root");
+	$connect = new PDO("mysqli:host=localhost;dbname=Internal_CRM", "root", "root");
 
 	function getUserAccessRoleByID($id)
 	{

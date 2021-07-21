@@ -49,7 +49,7 @@ if(isset($_POST['login']))
 		//$md5Password = md5($password);
 		
 		$sql = "select * from login where username = '".$username."' and password = '".$password."'";
-		$rs = mysqli_query($conn,$sql);
+		$rs = mysqli_query($connect,$sql);
         $getNumRows = mysqli_num_rows($rs);
        
 		if($getNumRows == 1)
