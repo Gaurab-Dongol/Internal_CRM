@@ -57,9 +57,9 @@ if(isset($_POST['login']))
 			$getUserRow = mysqli_fetch_assoc($rs);
 			unset($getUserRow['password']);
 			
-			//$_SESSION = $getUserRow;
+			$_SESSION = $getUserRow;
 						
-			header("location:index.php");
+			header("location:index.php?RID=".$getUserRow['RoleId']);
 			exit;
 		}
 		else

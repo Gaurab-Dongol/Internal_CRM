@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once('config.php');
 $connect = new PDO("mysql:host=localhost;dbname=Internal_CRM", "root", "root");
 
@@ -510,12 +512,17 @@ $result = $statement->fetchAll();
                                     </div>
                                 </div>
 
+                                <?php
+                                if($_SESSION['RoleId'] == 1)
+                                {
+                                ?>
                                 <form class="form-horizontal" action="" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
                                 <div class="table-data__tool-right"><input type="file" name="file" id="file" accept=".csv">
                                     <button type="submit" id="submit" name="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
                                         <i class="zmdi zmdi-plus"></i>add item</button>
                                 </div>
                                 </form>
+                                <?php } ?>
                             </div>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
