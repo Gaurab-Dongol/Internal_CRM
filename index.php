@@ -1,15 +1,11 @@
 <?php
-
 require_once('config.php');
 
-
 $query = "SELECT DISTINCT Consultant FROM OfficeHQ";
-$statement = $connect->prepare($query);
-$statement->execute();
-$result = $statement->fetchAll();
-
+$statement = mysqli_query($connect,$query);
+$result = mysqli_fetch_array($statement,MYSQLI_ASSOC);
+       
 require_once('header.php');
-
 ?>
             <section class="p-t-20">
                 <div class="container">

@@ -1,5 +1,17 @@
 <?php
+// Include config file
 require_once('config.php');
+ 
+if(isset($_POST['register']))
+{
+        $name = trim($_POST['username']);    
+        $username = trim($_POST['email']);
+        $password = trim($_POST['password']);
+        
+        $sql = "INSERT INTO login (RoleId,Name,username,password) VALUES ( 2, '$name', '$username', '$password')";
+		mysqli_query($connect,$sql);
+	}
+    
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +26,7 @@ require_once('config.php');
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Login</title>
+    <title>Register</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -38,81 +50,38 @@ require_once('config.php');
     <link href="css/theme.css" rel="stylesheet" media="all">
 
 </head>
-<?php
-if(isset($_POST['login']))
-{
-	if(!empty($_POST['username']) && !empty($_POST['password']))
-	{
-		$username 	= trim($_POST['username']);
-		$password 	= trim($_POST['password']);
-		
-		//$md5Password = md5($password);
-		
-		$sql = "select * from login where username = '".$username."' and password = '".$password."'";
-		$rs = mysqli_query($connect,$sql);
-        $getNumRows = mysqli_num_rows($rs);
-       
-		if($getNumRows == 1)
-		{
-			$getUserRow = mysqli_fetch_assoc($rs);
-			unset($getUserRow['password']);
-			
-			$_SESSION = $getUserRow;
-						
-			header("location:index.php?RID=".$getUserRow['RoleId']);
-			exit;
-		}
-		else
-		{
-            $errorMsg = "Wrong email or password";
-            echo $errorMsg;
-		}
-	}
-}
 
-if(isset($_GET['lmsg']) && $_GET['lmsg'] == true)
-{
-    $errorMsg = "Login required to access dashboard";
-    echo $errorMsg;
-}
-?>
 <body class="animsition">
     <div class="page-wrapper">
         <div class="page-content--bge5">
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">
-                        <!--<div class="login-logo">
+                        <div class="login-logo">
                             <a href="#">
-                                <img src="" alt="CoolAdmin">
+                                <!--<img src="images/icon/logo.png" alt="CoolAdmin">-->
                             </a>
-                        </div>-->
+                        </div>
                         <div class="login-form">
                             <form action="" method="post">
                                 <div class="form-group">
+                                    <label>Username</label>
+                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                </div>
+                                <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="username" placeholder="Email">
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="#">Forgotten Password?</a>
-                                    </label>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" name="confirm_password" placeholder="Confirm Password" class="au-input au-input--full" >
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" name="login">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="register">register</button> 
                             </form>
-                            <!--<div class="register-link">
-                                <p>
-                                    Don't you have account?
-                                    <a href="#">Sign Up Here</a>
-                                </p>
-                            </div>-->
                         </div>
                     </div>
                 </div>
