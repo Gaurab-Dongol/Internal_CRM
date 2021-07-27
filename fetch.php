@@ -40,7 +40,7 @@ if ($total_row > 0) {
             <td>' . $row["Appointment"] . '</td>
 			<td>' . $row["MM_Update"] . '</td>
 			<td>
-			    <a href="update.php?id='.$row["Id"].'" class="btn btn-success"><span class="fa fa-check"></span></a>
+			    <a href="index.php?id='.$row["Id"].'" class="btn btn-success" type="button" data-toggle="modal1" data-target="#exampleModal"><span class="fa fa-check"></span></a>
 				<a href="" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
 			</td>
 		</tr>
