@@ -4,14 +4,13 @@ require_once('config.php');
  
 if(isset($_POST['register']))
 {
-        $name = trim($_POST['username']);    
-        $username = trim($_POST['email']);
-        $password = trim($_POST['password']);
-        
-        $sql = "INSERT INTO login (RoleId,Name,username,password) VALUES ( 2, '$name', '$username', '$password')";
-		mysqli_query($connect,$sql);
-	}
+    $name = trim($_POST['username']);    
+    $username = trim($_POST['email']);
+    $password = trim($_POST['password']);
     
+    $sql = "INSERT INTO login (RoleId,Name,username,password) VALUES ( 2, '$name', '$username', '$password')";
+    mysqli_query($connect,$sql);
+}
 ?>
 
 <!DOCTYPE html>

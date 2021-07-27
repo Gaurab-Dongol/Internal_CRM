@@ -33,15 +33,16 @@ if ($total_row > 0) {
 			<td>' . $row["Client_Name"] . '</td>
 			<td>' . $row["Email_Id"] . '</td>
 			<td>' . $row["Contact"] . '</td>
-			<td>
-			' . $row["Enquiry"] . '
-			
-			</td>
+			<td>' . $row["Enquiry"] . '</td>
             <td>' . $row["Notes"] . '</td>
             <td>' . $row["Status"] . '</td>
             <td>' . $row["Current_Visa"] . '</td>
             <td>' . $row["Appointment"] . '</td>
-            <td>' . $row["MM_Update"] . '</td>
+			<td>' . $row["MM_Update"] . '</td>
+			<td>
+			    <a href="update.php?id='.$row["Id"].'" class="btn btn-success"><span class="fa fa-check"></span></a>
+				<a href="" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
+			</td>
 		</tr>
 		';
 	}

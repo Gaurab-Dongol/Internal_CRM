@@ -4,6 +4,23 @@ require_once('config.php');
 $query = "SELECT DISTINCT Consultant FROM OfficeHQ";
 $statement = mysqli_query($connect,$query);
 $result = mysqli_fetch_array($statement,MYSQLI_ASSOC);
+
+if(isset($_POST['Submit']))
+{
+    $name = trim($_POST['Name']);    
+    $Email = trim($_POST['Email']);
+    $Contact = trim($_POST['Contact']);
+    $Enquiry = trim($_POST['Enquiry']);
+    $Note = trim($_POST['Note']);
+    $Status = trim($_POST['Status']);
+    $CurrentVisa = trim($_POST['CurrentVisa']);
+    $Appointment = trim($_POST['Appointment']);
+    $MM_Update = trim($_POST['MM_Update']);
+    $Consultant = trim($_POST['Consultant']);
+    
+    $sql = "INSERT INTO OfficeHQ (Client_Name, Email_Id, Contact, Enquiry, Consultant, Notes, Status, Current_Visa, Appointment, MM_Update) VALUES ( '$name', '$Email', '$Contact', '$Enquiry', '$Consultant', '$Notes', '$Status', '$CurrentVisa', '$Appointment', '$MM_Update')";
+    mysqli_query($connect,$sql);
+}
        
 require_once('header.php');
 ?>
@@ -28,7 +45,8 @@ require_once('header.php');
                                         <div style="clear:both"></div>
                                     </div>
                                 </div>
-
+                                            
+                                <!-- User based header-->
                                 <?php
                                 if($_SESSION['RoleId'] == 1)
                                 {
@@ -42,6 +60,8 @@ require_once('header.php');
                                 </form>
                                 <?php } ?>
                             </div>
+
+                            <!-- Add clients -->
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -59,51 +79,60 @@ require_once('header.php');
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div class="form-now">
-                                                    <div class="col">
-                                                        <label for="inputEmployee">Select Employee Name</label>
-                                                        <select id="inputEmployee" class="form-control-1">
-                                                            <option selected>Choose from list...</option>
-                                                            <option value="">Somya Verma</option>
-                                                            <option value="">Kathrine Lastname</option>
-                                                            <option value="">Upasana Lastname</option>
-                                                            <option value="">Test employee</option>
-                                                        </select>
-                                                    </div>
+                                            <form action="" method="post">
+                                                <div class="form-group">
+                                                    <label for="inputEmployee">Select Employee Name</label>
+                                                    <select id="inputEmployee" name="Consultant" class="form-control">
+                                                        <option selected>Choose from list...</option>
+                                                        <option value="Somya Verma">Somya Verma</option>
+                                                        <option value="Kathrine Lastname">Kathrine Lastname</option>
+                                                        <option value="Upasana Lastname">Upasana Lastname</option>
+                                                        <option value="Test employee">Test employee</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="col">
-                                                        <label for="inputFirstName">First Name</label>
-                                                        <input type="text" class="form-control" placeholder="First name">
-                                                    </div>
-                                                    <div class="col">
-                                                        <label for="inputLastName">Last Name</label>
-                                                        <input type="text" class="form-control" placeholder="Last name">
+                                                        <label for="inputFirstName">Client Name</label>
+                                                        <input type="text" class="form-control" name="Name" placeholder="Client name">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">Email</label>
-                                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                                        <input type="email" class="form-control" name="Email" placeholder="Email">
                                                     </div>
-
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputAddress">Address</label>
-                                                    <input type="text" class="form-control" id="inputAddress" placeholder="street name">
+                                                    <label for="inputAddress">Contact</label>
+                                                    <input type="text" class="form-control" name="Contact" placeholder="Contact">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputAddress2">Address 2</label>
-                                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                                    <label for="inputAddress">Enquiry</label>
+                                                    <input type="text" class="form-control" name="Enquiry" placeholder="Enquiry">
                                                 </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputCity">City</label>
-                                                        <input type="text" class="form-control" id="inputCity">
-                                                    </div>
-                                                    <div class="form-group col-md-4">
+                                                <div class="form-group">
+                                                    <label for="inputAddress2">Note</label>
+                                                    <input type="text" class="form-control" name="Note" placeholder="Note">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputCity">Status</label>
+                                                    <input type="text" class="form-control" name="Status" placeholder="Status">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputCity">Current Visa</label>
+                                                    <input type="text" class="form-control" name="CurrentVisa" placeholder="Current Visa">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputCity">Appointment</label>
+                                                    <input type="text" class="form-control" name="Appointment" placeholder="Appointment">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputCity">MM_Update</label>
+                                                    <input type="text" class="form-control" name="MM_Update" placeholder="MM_Update">
+                                                </div>
+                                    
+                                                   <!-- <div class="form-group col-md-4">
                                                         <label for="inputState">State</label>
                                                         <select id="inputState" class="form-control">
                                                             <option selected>Choose...</option>
@@ -117,19 +146,19 @@ require_once('header.php');
                                                     <div class="form-group col-md-2">
                                                         <label for="inputZip">Zip</label>
                                                         <input type="text" class="form-control" id="inputZip">
-                                                    </div>
+                                                    </div>-->
                                                 </div>
-
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <!--Import CSV File -->
                             <?php
                             if (isset($_POST["submit"])) {
@@ -174,6 +203,7 @@ require_once('header.php');
                                             <th>Current Visa</th>
                                             <th>Appointment</th>
                                             <th>MM_Update</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -184,6 +214,104 @@ require_once('header.php');
                     </div>
                 </div>
             </section>
+        </div>
+
+        <!-- Add clients -->
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Add Client Details
+                </button>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="inputEmployee">Select Employee Name</label>
+                                <select id="inputEmployee" name="Consultant" class="form-control">
+                                    <option selected>Choose from list...</option>
+                                    <option value="Somya Verma">Somya Verma</option>
+                                    <option value="Kathrine Lastname">Kathrine Lastname</option>
+                                    <option value="Upasana Lastname">Upasana Lastname</option>
+                                    <option value="Test employee">Test employee</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="inputFirstName">Client Name</label>
+                                    <input type="text" class="form-control" name="Name" placeholder="Client name">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" class="form-control" name="Email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Contact</label>
+                                <input type="text" class="form-control" name="Contact" placeholder="Contact">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Enquiry</label>
+                                <input type="text" class="form-control" name="Enquiry" placeholder="Enquiry">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">Note</label>
+                                <input type="text" class="form-control" name="Note" placeholder="Note">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCity">Status</label>
+                                <input type="text" class="form-control" name="Status" placeholder="Status">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCity">Current Visa</label>
+                                <input type="text" class="form-control" name="CurrentVisa" placeholder="Current Visa">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCity">Appointment</label>
+                                <input type="text" class="form-control" name="Appointment" placeholder="Appointment">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCity">MM_Update</label>
+                                <input type="text" class="form-control" name="MM_Update" placeholder="MM_Update">
+                            </div>
+                
+                                <!-- <div class="form-group col-md-4">
+                                    <label for="inputState">State</label>
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option value="">New South Wales</option>
+                                        <option value="">Queensland</option>
+                                        <option value="">Victoria</option>
+                                        <option value="">South Australia</option>
+                                        <option value="">Western Australia</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputZip">Zip</label>
+                                    <input type="text" class="form-control" id="inputZip">
+                                </div>-->
+                            </div>
+                            <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                </div>
+            </div>
         </div>
 
 <?php 
