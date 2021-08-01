@@ -1,10 +1,6 @@
 <?php
 require_once('config.php');
 
-$query = "SELECT DISTINCT Consultant FROM OfficeHQ";
-$statement = mysqli_query($connect,$query);
-$result = mysqli_fetch_array($statement,MYSQLI_ASSOC);
-
 if(isset($_POST['Submit']))
 {
     $name = trim($_POST['Name']);    
@@ -35,7 +31,13 @@ require_once('header.php');
                                         <select class="js-select2" name="multi_search_filter js-select2" id="multi_search_filter">
                                             <option selected="selected">Everyone</option>
                                             <?php
-                                            foreach ($result as $row) {
+
+                                            $query = "SELECT DISTINCT Consultant FROM OfficeHQ";
+                                            $statement = mysqli_query($connect,$query);
+                                            //$result = mysqli_fetch_array($statement);
+                                            //foreach($result as $row) {
+                                            while($row = mysqli_fetch_array($statement))
+                                            {
                                                 echo '<option value="' . $row["Consultant"] . '">' . $row["Consultant"] . '</option>';
                                             }
                                             ?>

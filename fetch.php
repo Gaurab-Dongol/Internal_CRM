@@ -4,6 +4,7 @@
 
 $connect = new PDO("mysql:host=localhost;dbname=Internal_CRM", "root", "root");
 
+//require_once('config.php');
 if ($_POST["query"] != '') {
 	$search_array = explode(",", $_POST["query"]);
 	$search_text = "'" . implode("', '", $search_array) . "'";
@@ -15,7 +16,6 @@ if ($_POST["query"] != '') {
 } else {
 	$query = "SELECT * FROM OfficeHQ ORDER BY Consultant DESC";
 }
-
 $statement = $connect->prepare($query);
 
 $statement->execute();
@@ -41,7 +41,7 @@ if ($total_row > 0) {
 			<td>' . $row["MM_Update"] . '</td>
 			<td>
 			    <a href="index.php?id='.$row["Id"].'" class="btn btn-success" type="button" data-toggle="modal1" data-target="#exampleModal"><span class="fa fa-check"></span></a>
-				<a href="" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
+				<a href="delete.php?id='.$row["Id"].'" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
 			</td>
 		</tr>
 		';
@@ -55,3 +55,4 @@ if ($total_row > 0) {
 }
 
 echo $output;
+?>
