@@ -108,31 +108,17 @@ if ($total_row > 0) {
                                                     <label for="inputCity">MM_Update</label>
                                                     <input type="text" class="form-control" name="MM_Update" placeholder="MM_Update">
                                                 </div>
-                                    
-                                                   <!-- <div class="form-group col-md-4">
-                                                        <label for="inputState">State</label>
-                                                        <select id="inputState" class="form-control">
-                                                            <option selected>Choose...</option>
-                                                            <option value="">New South Wales</option>
-                                                            <option value="">Queensland</option>
-                                                            <option value="">Victoria</option>
-                                                            <option value="">South Australia</option>
-                                                            <option value="">Western Australia</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputZip">Zip</label>
-                                                        <input type="text" class="form-control" id="inputZip">
-                                                    </div>-->
-                                                </div>
+                                    	</div>
                                                 <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
-												
+												<div class="modal-footer">
+												<button type="button" class="btn btn-light" data-dismiss="modal">
+												Close
+												</button>
+                                        	</div>
                                             </form>
+											
                                         </div>
-                                        <div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
