@@ -79,7 +79,8 @@ require_once('header.php');
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="fetch.php" method="post">
+                                <form action="
+                                " method="post">
                                     <div class="form-group">
                                         <label for="inputEmployee">Select Employee Name</label>
                                         <select id="inputEmployee" name="Consultant" class="form-control">
