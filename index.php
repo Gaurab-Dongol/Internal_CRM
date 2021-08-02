@@ -131,10 +131,6 @@ require_once('header.php');
                                         <label for="inputCity">MM_Update</label>
                                         <input type="text" class="form-control" name="MM_Update" placeholder="MM_Update">
                                     </div>
-
-
-
-
                                 </form>
                             </div>
                             <div class="modal-footer">
