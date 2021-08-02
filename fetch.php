@@ -40,13 +40,13 @@ if ($total_row > 0) {
             <td>' . $row["Appointment"] . '</td>
 			<td>' . $row["MM_Update"] . '</td>
 			<td>
-			    <a href="#" class="btn btn-success" type="button" data-toggle="modal" data-target="#exampleModal">
+			    <a href="#" class="btn btn-success" type="button" data-toggle="modal" data-target="#exampleModalOne">
 				<span class="fa fa-check"></span>
 				</a>
 				<a href="delete.php?id=' . $row["Id"] . '" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
 			</td>
 		</tr>
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="exampleModalOne" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelOne" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

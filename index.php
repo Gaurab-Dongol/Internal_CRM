@@ -133,71 +133,71 @@ require_once('header.php');
                                     </div>
 
 
-                            </div>
-                            <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!--Import CSV File -->
-            <?php
-            if (isset($_POST["submit"])) {
-                if ($_FILES['file']['name']) {
-                    $filename = explode(".", $_FILES['file']['name']);
-                    if ($filename[1] == 'csv') {
-                        $handle = fopen($_FILES['file']['tmp_name'], "r");
-                        //Skips first row of excel file
-                        fgetcsv($handle);
-                        while ($data = fgetcsv($handle)) {
-                            $item1 = mysqli_real_escape_string($connect, $data[0]);
-                            $item2 = mysqli_real_escape_string($connect, $data[1]);
-                            $item3 = mysqli_real_escape_string($connect, $data[2]);
-                            $item4 = mysqli_real_escape_string($connect, $data[3]);
-                            $item5 = mysqli_real_escape_string($connect, $data[4]);
-                            $item6 = mysqli_real_escape_string($connect, $data[5]);
-                            $item7 = mysqli_real_escape_string($connect, $data[6]);
-                            $item8 = mysqli_real_escape_string($connect, $data[7]);
-                            $item9 = mysqli_real_escape_string($connect, $data[8]);
-                            $item10 = mysqli_real_escape_string($connect, $data[9]);
-                            $query1 = "INSERT INTO OfficeHQ (`Client_Name`,`Email_Id`,`Contact`,`Enquiry`,`Consultant`,`Notes`,`Status`,`Current_Visa`,`Appointment`,`MM_Update`) VALUES ('$item1','$item2', '$item3', '$item4', '$item5', '$item6', '$item7','$item8','$item9','$item10')";
-                            //$query = "INSERT INTO OfficeHQ (`Client_Name`,`Email_Id`,`Contact`,`Enquiry`,`Consultant`,`Notes`,`Status`,`Current_Visa`,`Appointment`,`MM_Update`) VALUES ('item1','item2', 000, 'item4', 'item5', 'item6', 'item7','item8','item9','item10')";
-                            mysqli_query($connect, $query1);
+                <!--Import CSV File -->
+                <?php
+                if (isset($_POST["submit"])) {
+                    if ($_FILES['file']['name']) {
+                        $filename = explode(".", $_FILES['file']['name']);
+                        if ($filename[1] == 'csv') {
+                            $handle = fopen($_FILES['file']['tmp_name'], "r");
+                            //Skips first row of excel file
+                            fgetcsv($handle);
+                            while ($data = fgetcsv($handle)) {
+                                $item1 = mysqli_real_escape_string($connect, $data[0]);
+                                $item2 = mysqli_real_escape_string($connect, $data[1]);
+                                $item3 = mysqli_real_escape_string($connect, $data[2]);
+                                $item4 = mysqli_real_escape_string($connect, $data[3]);
+                                $item5 = mysqli_real_escape_string($connect, $data[4]);
+                                $item6 = mysqli_real_escape_string($connect, $data[5]);
+                                $item7 = mysqli_real_escape_string($connect, $data[6]);
+                                $item8 = mysqli_real_escape_string($connect, $data[7]);
+                                $item9 = mysqli_real_escape_string($connect, $data[8]);
+                                $item10 = mysqli_real_escape_string($connect, $data[9]);
+                                $query1 = "INSERT INTO OfficeHQ (`Client_Name`,`Email_Id`,`Contact`,`Enquiry`,`Consultant`,`Notes`,`Status`,`Current_Visa`,`Appointment`,`MM_Update`) VALUES ('$item1','$item2', '$item3', '$item4', '$item5', '$item6', '$item7','$item8','$item9','$item10')";
+                                //$query = "INSERT INTO OfficeHQ (`Client_Name`,`Email_Id`,`Contact`,`Enquiry`,`Consultant`,`Notes`,`Status`,`Current_Visa`,`Appointment`,`MM_Update`) VALUES ('item1','item2', 000, 'item4', 'item5', 'item6', 'item7','item8','item9','item10')";
+                                mysqli_query($connect, $query1);
+                            }
+                            fclose($handle);
+                            echo "<script>alert('Import done');</script>";
                         }
-                        fclose($handle);
-                        echo "<script>alert('Import done');</script>";
                     }
                 }
-            }
-            ?>
+                ?>
 
-            <div class="table-responsive table--no-card m-b-30">
-                <table class="table table-borderless table-striped table-earning">
-                    <thead>
-                        <tr>
-                            <th>Client Name</th>
-                            <th>Email Id</th>
-                            <th>Contact</th>
-                            <th>Enquiry</th>
-                            <th>Notes</th>
-                            <th>Status</th>
-                            <th>Current Visa</th>
-                            <th>Appointment</th>
-                            <th>MM_Update</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="table-responsive table--no-card m-b-30">
+                    <table class="table table-borderless table-striped table-earning">
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Email Id</th>
+                                <th>Contact</th>
+                                <th>Enquiry</th>
+                                <th>Notes</th>
+                                <th>Status</th>
+                                <th>Current Visa</th>
+                                <th>Appointment</th>
+                                <th>MM_Update</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 </div>
