@@ -1,5 +1,6 @@
 <?php
 require_once('config.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -39,43 +40,38 @@ require_once('config.php');
 
 </head>
 <?php
-if(isset($_POST['login']))
-{
-	if(!empty($_POST['username']) && !empty($_POST['password']))
-	{
-		$username 	= trim($_POST['username']);
-		$password 	= trim($_POST['password']);
-		
-		//$md5Password = md5($password);
-		
-		$sql = "select * from login where username = '".$username."' and password = '".$password."'";
-		$rs = mysqli_query($connect,$sql);
+if (isset($_POST['login'])) {
+    if (!empty($_POST['username']) && !empty($_POST['password'])) {
+        $username     = trim($_POST['username']);
+        $password     = trim($_POST['password']);
+
+        //$md5Password = md5($password);
+
+        $sql = "select * from login where username = '" . $username . "' and password = '" . $password . "'";
+        $rs = mysqli_query($connect, $sql);
         $getNumRows = mysqli_num_rows($rs);
-       
-		if($getNumRows == 1)
-		{
-			$getUserRow = mysqli_fetch_assoc($rs);
-			unset($getUserRow['password']);
-			
-			$_SESSION = $getUserRow;
-						
-			header("location:index.php?RID=".$getUserRow['RoleId']);
-			exit;
-		}
-		else
-		{
+
+        if ($getNumRows == 1) {
+            $getUserRow = mysqli_fetch_assoc($rs);
+            unset($getUserRow['password']);
+
+            $_SESSION = $getUserRow;
+
+            header("location:index.php?RID=" . $getUserRow['RoleId']);
+            exit;
+        } else {
             $errorMsg = "Wrong email or password";
             echo $errorMsg;
-		}
-	}
+        }
+    }
 }
 
-if(isset($_GET['lmsg']) && $_GET['lmsg'] == true)
-{
+if (isset($_GET['lmsg']) && $_GET['lmsg'] == true) {
     $errorMsg = "Login required to access dashboard";
     echo $errorMsg;
 }
 ?>
+
 <body class="animsition">
     <div class="page-wrapper">
         <div class="page-content--bge5">
