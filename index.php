@@ -1,6 +1,7 @@
 <?php
 require_once('config.php');
 
+//Test 
 if(isset($_POST['Submit']))
 {
     $name = trim($_POST['Name']);    
