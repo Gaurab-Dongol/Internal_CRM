@@ -108,20 +108,15 @@ if ($total_row > 0) {
                                                     <label for="inputCity">MM_Update</label>
                                                     <input type="text" class="form-control" name="MM_Update" placeholder="MM_Update">
                                                 </div>
-                                    	</div>
-                                                <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
-												<div class="modal-footer">
-												<button type="button" class="btn btn-light" data-dismiss="modal">
-												Close
-												</button>
-                                        	</div>
-                                            </form>
-											
-                                        </div>
-                                        
+                                    		</form>
+											<div class="modal-footer">
+        										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        										<button type="button" class="btn btn-primary">Save changes</button>
+      										</div>
+										</div>
                                     </div>
                                 </div>
-                            </div>
+        </div>
 		';
 	}
 } else {
