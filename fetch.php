@@ -46,78 +46,7 @@ if ($total_row > 0) {
 				<a href="delete.php?id=' . $row["Id"] . '" class="btn btn-danger"><span class="fa fa-eraser"></span></a>
 			</td>
 		</tr>
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelOne" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="" method="post">
-                                                <div class="form-group">
-                                                    <label for="inputEmployee">Select Employee Name</label>
-                                                    <select id="inputEmployee" name="Consultant" class="form-control">
-                                                        <option selected>Choose from list...</option>
-                                                        <option value="Somya Verma">Somya Verma</option>
-                                                        <option value="Kathrine Lastname">Kathrine Lastname</option>
-                                                        <option value="Upasana Lastname">Upasana Lastname</option>
-                                                        <option value="Test employee">Test employee</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-row">
-                                                    <div class="col">
-                                                        <label for="inputFirstName">Client Name</label>
-                                                        <input type="text" class="form-control" name="Name" placeholder="Client name">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">Email</label>
-                                                        <input type="email" class="form-control" name="Email" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputAddress">Contact</label>
-                                                    <input type="text" class="form-control" name="Contact" placeholder="Contact">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputAddress">Enquiry</label>
-                                                    <input type="text" class="form-control" name="Enquiry" placeholder="Enquiry">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputAddress2">Note</label>
-                                                    <input type="text" class="form-control" name="Note" placeholder="Note">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputCity">Status</label>
-                                                    <input type="text" class="form-control" name="Status" placeholder="Status">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputCity">Current Visa</label>
-                                                    <input type="text" class="form-control" name="CurrentVisa" placeholder="Current Visa">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputCity">Appointment</label>
-                                                    <input type="text" class="form-control" name="Appointment" placeholder="Appointment">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputCity">MM_Update</label>
-                                                    <input type="text" class="form-control" name="MM_Update" placeholder="MM_Update">
-                                                </div>
-                                    		</form>
-										</div>
-											<div class="modal-footer">
-        										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        										<button type="button" class="btn btn-primary">Save changes</button>
-      										</div>
-										</div>
-                                    </div>
-                                </div>
-        </div>
+		
 		';
 	}
 } else {
